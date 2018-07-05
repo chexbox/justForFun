@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <script>
+      function go() {
+      var w = Number(document.getElementById("w").value);
+      var er = Number(document.getElementById("e").value);
+      var rw = Boolean(document.getElementById("rw").checked);
+      var re = Boolean(document.getElementById("re").checked);
+      var wpm;
+      if (rw) {
+        wpm = Math.round(w + (Math.random() * (w / 10)));
+      } else {
+        wpm = w;
+      };
+      var err;
+      if (re) {
+        err = Math.round(er + (Math.random() * (er / 10)));
+      } else {
+        err = er;
+      };
+      var awpm = wpm - err;
+      var acc = Math.round((awpm / wpm) * 100);
+      var char = Math.round((4 + Math.random()) * wpm);
+      document.getElementById("link").href = "https://www.typingtest.com/result.html?acc=" + acc + "&nwpm=" + awpm + "&gwpm=" + wpm + "&ncpm=73&gcpm=" + char + "&dur=60&time=60&chksum=6364&unit=wpm&kh=998&td=null&err=" + err + "&hits=" + char; 
+      document.getElementById("link").innerHTML = "Go!"
+      };
+    </script>
+    <title>Type Fast!</title>
+  </head>
+  <body>
+    <h1>Typingtest.com Results Generator</h1>
+    WPM Goal <input type="number" id="w"><br>
+    Errors <input type="number" id="e"><br>
+    WPM Randomization <input type="checkbox" id="rw">Adds randomization to wpm.<br>
+    Errors Randomization <input type="checkbox" id="re">Adds randomization to errors.<br>
+    <button onclick="go()">Type It!</button><br>
+    <a id="link" href="#"></a>
+    <p><a href="https://chexbox.github.io/Algebra-Calculator/">See my Calculator!</a></p>
+  </body>
+</html>
